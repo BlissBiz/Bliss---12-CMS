@@ -36,7 +36,7 @@ class Starter:
 class Questions:
   def __init__(self, parent):
     self.quiz_questions = {
-      1: ["Who is the trinity in DC?",
+      1: ["Who are known as the trinity in DC?",
          'Batman, Superman, Flash',
          'Batman, Superman, Wonder Woman',
          'Batman, Superman, Green Lantern',
@@ -120,62 +120,64 @@ class Questions:
          ,2],
       }
   
-    background_color = "darkorange"
+    background_color = "lightgrey"
       #Frame setup
     # self.quiz_frame = Frame(parent, bg = background_color, padx=150, pady=300)
     # self.quiz_frame.grid()
       #randomiser 
     randomiser()
-    img = Image.open("OrangeBackground.png")
+    img = Image.open("or1.jpg")
     img= img.resize((800, 700),Image.ANTIALIAS)
     picture = ImageTk.PhotoImage(img) 
     image_label.configure(image = picture) #this has to be same name you started at bottom
     image_label.image = picture # keep a reference!   
-  
+
+    
       #label widget for our Question
-    self.question_label = Label (parent, text = self.quiz_questions[qnum][0], font=("Tw Cen MT", "16", "bold"), bg=background_color)
-    self.question_label.grid(row=0)
+    self.question_label = Label (parent, text = self.quiz_questions[qnum][0], font=("Times", "16", "bold"), bg="orange")
+    self.question_label.place(x=110, y=200)
       #Holds the value of radio buttons
     self.var1=IntVar()
   
       #Radio button 1
     self.rb1= Radiobutton(parent, text=self.quiz_questions[qnum][1], font=("Courier","11"), bg=background_color,value=1,padx=10,pady=10,
                   variable=self.var1, background = background_color)
-    self.rb1.grid(row=1, sticky=W)
+    self.rb1.place(x=110, y=300)
         
          #Radio button 2
     self.rb2= Radiobutton(parent, text=self.quiz_questions[qnum][2], font=("Courier","11"), bg=background_color,value=2,padx=10,pady=10,
                   variable=self.var1, background = background_color)
-    self.rb2.grid(row=2, sticky=W)
+    self.rb2.place(x=110, y=350)
   
          #Radio button 3
     self.rb3= Radiobutton(parent, text=self.quiz_questions[qnum][3], font=("Courier","11"), bg=background_color,value=3,padx=10,pady=10,
                   variable=self.var1, background = background_color)
-    self.rb3.grid(row=1, sticky=E)
+    self.rb3.place(x=110, y=400)
         
          #Radio button 4
     self.rb4= Radiobutton(parent, text=self.quiz_questions[qnum][4], font=("Courier","11"), bg=background_color,value=4,padx=10,pady=10,
                   variable=self.var1, background = background_color)
-    self.rb4.grid(row=2, sticky=E)
+    self.rb4.place(x=110, y=450)
   
     #Confrim answer button
     self.confirm_button = Button(parent, text="Confirm", font=("Courier","11"), bg="whitesmoke", command=self.testing)
-    self.confirm_button.grid(row=4, padx=5,pady=5)
+    self.confirm_button.place(x=110, y=600)
         
         #Score Label
-    self.score_label=Label(parent, text="Score", font=("Courier","11"), bg=background_color)
-    self.score_label.grid(row=5, padx=5, pady=5)
-  
+    self.score_label=Label(parent, text="Score", font=("Courier","14"), bg=background_color)
+    self.score_label.place(x=600, y=600)
+
+
       #confifuring (editing) the question label to new questions and possible answers as new raido button choices
     #check whats wrong in this method below
-    def question_setup(self):
-         randomiser()
-         self.var.set(0)
-         self.question_label.config(text=self.quiz_questions[qnum][0])
-         self.rb1.config(text=self.quiz_questions[qnum][1])
-         self.rb1.config(text=self.quiz_questions[qnum][2])
-         self.rb1.config(text=self.quiz_questions[qnum][3])
-         self.rb1.config(text=self.quiz_questions[qnum][4])
+  def question_setup(self):
+       randomiser()
+       self.var.set(0)
+       self.question_label.config(text=self.quiz_questions[qnum][0])
+       self.rb1.config(text=self.quiz_questions[qnum][1])
+       self.rb2.config(text=self.quiz_questions[qnum][2])
+       self.rb3.config(text=self.quiz_questions[qnum][3])
+       self.rb4.config(text=self.quiz_questions[qnum][4])
   
   def testing(self):
       global score
@@ -188,23 +190,25 @@ class Questions:
             self.quiz_instance.config(text="Confirm")
           else:
             score+=0
-            points_label.configure(text="The correct answer was: " + question_answer[qnum][5])
+            points_label.configure(text="The correct answer was: " + quiz_questions[qnum][5])
             self.quiz_instance.config(text="Confirm")
       else:
           if choice == 0:
              self.quiz_instance.config(text="Try Again, You didn't select an option")
              choice=self.var1.get()
+             
           else:
-              if choice == question_answers [qnum] [6]:
+              if choice == quiz_questions[qnum][6]:
                 score+=1
                 self.quiz_instance.config(text="Confirm")
-                self.questions_setup()
+                self.question_setup()
               else:
                 print(choice)
                 score+=0
-                points_label.configure(text="The right answer was : " + question_answers[qnum][5])
+                points_label.configure(text="The right answer was : " + quiz_questions[qnum][5])
                 self.quiz_instance.config(text="Confirm")
-                self.questions_setup()
+                self.question_setup()
+
 
     
 #************** Starting Point of Program *************#
