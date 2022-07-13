@@ -164,20 +164,20 @@ class Questions:
     self.var1=IntVar()
   
       #Radio button 1
-    self.rb1= Radiobutton(parent, text=self.quiz_questions[qnum][1], font=("Courier","11", "bold"), bg="lightyellow",value=1,padx=10,pady=10, variable=self.var1, height='1', justify = 'left')
+    self.rb1= Radiobutton(parent, text=self.quiz_questions[qnum][1], font=("Courier","12", "bold"), bg="lightyellow",value=1,padx=10,pady=10, variable=self.var1, height='1', justify = 'left')
     self.rb1.place(x=50, y=200)
         
          #Radio button 2
-    self.rb2= Radiobutton(parent, text=self.quiz_questions[qnum][2], font=("Courier","11", "bold"), bg="lightyellow",value=2,padx=10,pady=10, variable=self.var1, height='1', justify = 'left')
-    self.rb2.place(x=50, y=250)
+    self.rb2= Radiobutton(parent, text=self.quiz_questions[qnum][2], font=("Courier","12", "bold"), bg="lightyellow",value=2,padx=10,pady=10, variable=self.var1, height='1', justify = 'left')
+    self.rb2.place(x=50, y=255)
   
          #Radio button 3
-    self.rb3= Radiobutton(parent, text=self.quiz_questions[qnum][3], font=("Courier","11", "bold"), bg="lightyellow",value=3,padx=10,pady=10, variable=self.var1, height='1', justify = 'left')
-    self.rb3.place(x=50, y=300)
+    self.rb3= Radiobutton(parent, text=self.quiz_questions[qnum][3], font=("Courier","12", "bold"), bg="lightyellow",value=3,padx=10,pady=10, variable=self.var1, height='1', justify = 'left')
+    self.rb3.place(x=50, y=315)
         
          #Radio button 4
-    self.rb4= Radiobutton(parent, text=self.quiz_questions[qnum][4], font=("Courier","11", "bold"), bg="lightyellow", value=4,padx=10,pady=10, variable=self.var1, height='1', justify = 'left')
-    self.rb4.place(x=50, y=350)
+    self.rb4= Radiobutton(parent, text=self.quiz_questions[qnum][4], font=("Courier","12", "bold"), bg="lightyellow", value=4,padx=10,pady=10, variable=self.var1, height='1', justify = 'left')
+    self.rb4.place(x=50, y=375)
   
     #Confrim answer button
     self.confirm_button = Button(parent, text="Confirm", font=("Courier","11", "bold"), bg="whitesmoke", height='1', command=self.testing)
@@ -251,10 +251,10 @@ class Ending:
     self.ending_frame.grid()
 
     self.end_heading = Label (self.ending_frame, text='Well Done' , font = ("Courier","22", 'bold'), bg=background, padx=15,pady=15)
-    self.end_heading.grid(row=4, pady=20)
+    self.end_heading.grid(row=3, pady=10)
 
-    self.quit= Button (self.ending_frame, text='Exit', width=10, bg='Red', font=('Courier', ' 14', 'bold'), command=self.close_ending)
-    self.quit.grid(row=5, pady=20)
+    self.quit= Button (self.ending_frame, text='Exit', width=10, bg='Red', font=('Courier', ' 14', 'bold'),fg = 'white', command=self.close_ending)
+    self.quit.grid(row=4, pady=10)
 
   def close_ending(self):
     self.ending_frame.destroy()
