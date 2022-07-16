@@ -5,12 +5,12 @@ from PIL import Image, ImageTk
 import random
 from tkinter import messagebox
 names_list = []
-asked = []
-score = 0
+
 
 
 def randomiser():
     global qnum
+    asked = []
     qnum = random.randint(1, 10)
     if qnum not in asked:
         asked.append(qnum)
@@ -40,10 +40,10 @@ class Starter:
                                  'Please enter your name')
         elif len(name) > 9:
 
-        # to make sure name entered is between 1-15
+        # to make sure name entered is between 1-9
 
-            messagebox.showerror('limit error',
-                                 'please enter a name between 1 and 9 characters'
+            messagebox.showerror('Limit Error',
+                                 'Please enter a name between 1 and 9 characters'
                                  )
         elif name.isnumeric():
             messagebox.showerror('Name error',
@@ -53,7 +53,7 @@ class Starter:
         # to make sure name entered is only letters not numbers
 
             messagebox.showerror('Symbol error',
-                                 'name cant consist of symbols')
+                                 "Name can't consist of symbols")
         else:
             names_list.append(name)
             print (names_list)
@@ -67,13 +67,13 @@ class Questions:
     def __init__(self, parent):
         self.quiz_questions = {
             1: [
-                'What is Supermans birth name?',
-                'Clark Kent',
-                "Kal'el",
-                'Oliver Queen',
-                'John Constantine',
-                "Kal'el",
-                2,
+                'What is Supermans birth name?', #Item 1, Index 0
+                'Clark Kent', #Item 2, Index 1
+                "Kal'el", #Item 3, Index 2
+                'Oliver Queen', #Item 4, Index 3
+                'John Constantine', #Item 5, Index 4
+                "Kal'el", #Item 6, Itex 5 
+                2, #Item 7, Index 6
                 ],
             2: [
                 'Why did Thor go to earth?',
@@ -297,7 +297,7 @@ class Questions:
         self.rb4.config(text=self.quiz_questions[qnum][4])
 
     def testing(self):
-        global score
+        score = 0
         points_label = self.score_label
         choice = self.var1.get()
         if len(asked) > 9:
